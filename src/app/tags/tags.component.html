@@ -1,0 +1,13 @@
+<div class="flex">
+  <div
+    class="m-1 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-emerald-600 text-white focus:outline-none focus:bg-gray-200 dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700">
+    {{category}}
+  </div>
+  <div *ngIf="tags" class=" flex">
+    <div *ngFor="let t of tags.split(',') " class="m-1 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800
+    focus:outline-none focus:bg-gray-200 dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700
+    dark:focus:bg-neutral-700">
+      {{t}}
+    </div>
+  </div>
+</div>

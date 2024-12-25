@@ -1,0 +1,72 @@
+<!-- Blog Article -->
+<div class="max-w-3xl px-4 pt-6 lg:pt-10 pb-12 sm:px-6 lg:px-8 mx-auto">
+  <div class="max-w-2xl">
+
+    <div *ngIf="isLoading"
+      class="min-h-60 flex flex-col bg-white   rounded-xl dark:bg-neutral-800 dark:border-neutral-700 dark:shadow-neutral-700/70">
+      <div class="flex flex-auto flex-col justify-center items-center p-4 md:p-5">
+        <div class="flex justify-center">
+          <div
+            class="animate-spin inline-block size-6 border-[3px] border-current border-t-transparent text-blue-600 rounded-full dark:text-blue-500"
+            role="status" aria-label="loading">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="!isLoading">
+      <!-- Content -->
+      <div class="space-y-5 md:space-y-8">
+        <div class="space-y-3">
+          <button type="button" (click)="goToHome()"
+            class="min-h-[38px] min-w-[38px]  py-2 px-2.5 inline-flex justify-center items-center gap-x-1.5 text-sm rounded-lg text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10"
+            aria-label="Previous">
+            <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m15 18-6-6 6-6"></path>
+            </svg>
+            <span class="text-gray-800 ">Go to the homepage</span>
+          </button>
+
+          <h2 class="text-2xl font-bold md:text-3xl dark:text-white">{{recipe!.name}}</h2>
+
+          <div>
+            <app-tags [category]="recipe!.category" [tags]="recipe!.tags" />
+          </div>
+        </div>
+
+        <figure>
+          <img class="w-full object-cover rounded-xl" [src]="recipe!.image" alt="Blog Image">
+        </figure>
+        <h3 class="text-2xl font-bold">Ingredients</h3>
+        <div class="grid grid-cols-3 gap-2">
+          <div *ngFor="let ing of ingredients " class="flex flex-col justify-center">
+            <p class="font-bold">{{ing.name}}</p>
+            <p>{{ing.measure}}</p>
+          </div>
+
+          <div class="flex flex-col justify-center">
+            <p class="font-bold">Farina</p>
+            <p>500g</p>
+          </div>
+
+          <div class="flex flex-col justify-center">
+            <p class="font-bold">Farina</p>
+            <p>500g</p>
+          </div>
+        </div>
+        <div class="pt-2">
+          <p class="text-2xl font-bold">Instructions</p>
+          <div *ngFor="let ins of recipe!.instructions.split('\r\n') " class="flex flex-col justify-center">
+            <p class="text-lg pb-2">{{ins}}</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- End Content -->
+  </div>
+</div>
+<!-- End Blog Article -->
